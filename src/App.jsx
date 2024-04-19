@@ -1,10 +1,11 @@
 
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
   const [contador, setContador] = useState(0);
+  const [photos , setPhotos] = useState([])
 
 
   function aumentar(){
@@ -19,9 +20,15 @@ function App() {
     setContador(0)
   }
 
+  useEffect(()=>{
+
+   
   fetch('https://jsonplaceholder.typicode.com/photos')
   .then(reponse => response.json())
-  .then(data => console.log.log(data))
+  .then(data => setPhotos(data))
+
+  },[])
+
 
   return (
     <>
@@ -34,13 +41,14 @@ function App() {
       
       
       <h1> Fotos</h1>
+      {photos.map((elment)=>(
+
+        <img key={element.id} src={element.url} alt={element.title} width={100} />
 
 
-    </>
+))}
+</>
 
-    
-   
-    
   )
 }
 
