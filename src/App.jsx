@@ -8,19 +8,39 @@ function App() {
 
 
   function aumentar(){
-    contador = contador + 1;
-    console.log(contador);
+    setContador(contador + 1)
   }
   
+  function diminuir(){
+    setContador(contador - 1)
+  }
+
+  function zerar(){
+    setContador(0)
+  }
+
+  fetch('https://jsonplaceholder.typicode.com/photos')
+  .then(reponse => response.json())
+  .then(data => console.log.log(data))
 
   return (
     <>
       <h1>Contador</h1>
       <p>{contador}</p>
       <button onClick={aumentar}>Aumentar</button>
-      <button>Dimunuir</button>
-      <button>Zerar</button>
+      <button onClick={diminuir}>Dimunuir</button>
+      <button onClick={zerar}>Zerar</button>
+      
+      
+      
+      <h1> Fotos</h1>
+
+
     </>
+
+    
+   
+    
   )
 }
 
